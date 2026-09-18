@@ -116,3 +116,6 @@ En resumen: el static sí "arregla" el choque, pero cambia el problema técnico 
 Pasar el Scanner como parámetro sigue siendo la solución más limpia y es justo la práctica que normalmente se busca reforzar en un curso 
 de estructuras de datos/POO. ¿Quieres que dejemos la versión con parámetro como la definitiva, o prefieres explorar la versión static para 
 fines de comparación en clase?
+
+A tener en cuenta: Un método static es un método que pertenece a la clase en sí, no a los objetos (instancias) que se crean a partir 
+de ella.
