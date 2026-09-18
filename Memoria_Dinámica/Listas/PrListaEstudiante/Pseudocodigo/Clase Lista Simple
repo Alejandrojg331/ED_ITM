@@ -45,4 +45,20 @@ clase ListaSimple
       finsi
    FinMetodo
 
+ publico vacio eliminarEnd()
+    Nodo actual = start
+    Nodo aux
+    mientras(actual.obtenerSig() != nulo)haga
+      aux = actual.obtenerSig()
+      si(aux.obtenerSig() == nulo)entonces
+        end = actual
+      finSi
+      actual = actual.obtenerSig()
+    FinMientras
+FinMetodo
+
+publico vacio eliminarCabeza()
+    start = start.obtenerSig()
+FinMetodo
+
 FinClase
