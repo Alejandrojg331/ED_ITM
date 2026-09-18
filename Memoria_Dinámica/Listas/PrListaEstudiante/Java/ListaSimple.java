@@ -56,6 +56,28 @@ public class ListaSimple
                 actual = actual.obtenerSig();
               }
             }
-    }   
+    }  
+
+   public void eliminarEnd()
+   {
+    Nodo actual = start;
+    Nodo aux;
+    while(actual.obtenerSig() != null)
+     {
+      aux = actual.obtenerSig();
+      if(aux.obtenerSig() == null)
+        {
+          end = actual;
+          end.asignarSig(null);
+          break;
+        }
+      actual = actual.obtenerSig();
+     }
+   }       
+   
+   public void eliminarStart()
+   {
+    start = start.obtenerSig();
+   }
     
 }
