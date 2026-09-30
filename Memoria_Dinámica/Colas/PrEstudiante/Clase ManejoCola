@@ -10,19 +10,18 @@ Clase ManejoCola
     mientras(resp==1)haga
      imprimir(" ingrese el código del nuevo estudiante: ")
      lea cod
-     si(Buscar(objPila,objPAux, cod)==falso)entonces
+     si(Buscar(objCola,objCAux, cod)==falso)entonces
       Estudiante objE = new Estudiante()
-      objE=objE.lecturaDatos(cod)
+      objE=objE.leerDatos(cod)
       objC.Push(objE)
       sino
-        imprimir("Estudiante ya existe en la pila \n")
+        imprimir("Estudiante ya existe en la Cola \n")
      Fin_Si
      Imprimir("Desea ingresar otro Estudiante a la Cola? 1. Sí   2. No")
      lea resp
     Fin_Mientras
     retornar objC
    FinMetodo
-
 
   publico cadena Imprimir(Cola objc,Cola objca)
    cadena Texto=""
@@ -36,20 +35,18 @@ Clase ManejoCola
    retornar Texto
   FinMetodo
 
-
   publico vacio DevolverAux(Cola objca, Cola objc)
    mientras(objca.IsEmpty()==falso)
      objc.Push(objca.Pop())
    Fin_Mientras
   FinMetodo
 
-
   publico booleano Buscar (Cola c1,Cola c2,entero cod)
      booleano sw=falso
      Estudiante info
      mientras(c1.IsEmpty()==falso)haga
       info=(Estudiante)c1.Pop()
-       Si(info.obtenerCod()== cod)entonces
+       Si(info.obtenerCodigo()== cod)entonces
          sw = verdadero
        FinSi
        c2.Push(info)
@@ -58,13 +55,12 @@ Clase ManejoCola
     retornar sw
   FinMetodo
 
-
   publico Objeto Eliminar (Cola c1,Cola c2,entero cod)
     Objeto est = nulo
     Estudiante info
     mientras(c1.IsEmpty()==falso)haga
        info=(Estudiante)c1.Pop()
-        Si(info.obtenerCod()== cod))entonces
+        Si(info.obtenerCodigo()== cod))entonces
           est = info
          sino
           c2.Push(info)
@@ -74,13 +70,12 @@ Clase ManejoCola
     retornar est
   FinMetodo
 
-
   publico Objeto Consultar(Cola c1, Cola c2,entero cod)
     Objeto est = nulo
     Estudiante info
     mientras(c1.IsEmpty()==falso)
       info =(Estudiante)c1.Pop()
-      Si(info.obtenerCod() == cod)entonces
+      Si(info.obtenerCodigo() == cod)entonces
         est = info
       Fin_Si
       c2.Push(info)
@@ -89,18 +84,17 @@ Clase ManejoCola
     retornar est
   FinMetodo
 
-
   publico vacio actualizarNotaDef(Cola objCola, Cola objCAux, entero cod)
      double notaDef
      booleano flag = falso
      Estudiante info
      mientras(objCola.IsEmpty()==falso)haga
       info = (Estudiante)objCola.Pop()
-      si(info.getCod() == cod)entonces
+      si(info.obtenerCodigo() == cod)entonces
         flag  = verdadero
         imprimir(" ingrese la nueva nota definitiva del estudiante: ")
-        notaDef = sc.nextDouble()
-        info.setNotaDef(notaDef)
+        lea notaDef
+        info.asignarNotaDef(notaDef)
         imprimir("La nota del estudiante fue actualizados exitosamente")
         objPAux.Push(info)
         roimper
@@ -108,8 +102,8 @@ Clase ManejoCola
       objCAux.Push(info)
      Fin_Mientras
      si(flag==falso)entonces
-       imprimir("**El código del estudiante no existe en la pila\n")
+       imprimir("**El código del estudiante no existe en la Cola\n")
      Fin_Si
-     retornoPilaAux(objPila, objPAux)
+     retornoAux(objCola, objCAux)
    FinMetodo
 FinClase
