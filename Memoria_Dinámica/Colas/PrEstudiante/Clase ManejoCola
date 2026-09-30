@@ -1,109 +1,113 @@
 Clase ManejoCola
 
-  publico Cola IngresarDatos (Cola objC)
-    Objeto Info
-    entero resp
-    entero cod
-    Estudiante objE = nuevo Estudiante()
-    imprimir("Desea ingresar un estudiante a la cola:  1. Si   2. No\n ")
-    lea resp
-    mientras(resp==1)haga
-     imprimir(" ingrese el código del nuevo estudiante: ")
-     lea cod
-     si(Buscar(objCola,objCAux, cod)==falso)entonces
-      Estudiante objE = new Estudiante()
-      objE=objE.leerDatos(cod)
-      objC.Push(objE)
-      sino
-        imprimir("Estudiante ya existe en la Cola \n")
-     Fin_Si
-     Imprimir("Desea ingresar otro Estudiante a la Cola? 1. Sí   2. No")
-     lea resp
-    Fin_Mientras
-    retornar objC
-   FinMetodo
+    publico Cola IngresarDatos(Cola objC)
+        entero resp
+        entero cod
+        Estudiante objE
+        imprimir("Desea ingresar un estudiante a la cola: 1. Sí   2. No")
+        lea resp
+        mientras(resp == 1) haga
+            imprimir("Ingrese el código del nuevo estudiante:")
+            lea cod
+            si(Buscar(objC, cod) == falso) entonces
+                objE = nuevo Estudiante()
+                objE = objE.leerDatos(cod)
+                objC.Push(objE)
+                imprimir("Estudiante ingresado correctamente.")
+            sino
+                imprimir("El estudiante ya existe en la cola.")
+            Fin_Si
+            imprimir("¿Desea ingresar otro estudiante? 1. Sí   2. No")
+            lea resp
+        Fin_Mientras
+        retornar objC
+    FinMetodo
 
-  publico cadena Imprimir(Cola objc,Cola objca)
-   cadena Texto=""
-   Objeto Info
-   mientras(objc.IsEmpty()==falso)haga
-      info=objc.Pop()
-      Texto=Texto+Info
-      objca.Push(Info)
-   Fin_Mientras
-   DevolverAux(objca,objc)
-   retornar Texto
-  FinMetodo
+    publico cadena Imprimir(Cola objC)
+        Cola colaAux = nuevo Cola(objC.obtenerMaxsize())
+        cadena texto = ""
+        Objeto info
+        mientras(objC.IsEmpty() == falso) haga
+            info = objC.Pop()
+            texto = texto + info + "\n"
+            colaAux.Push(info)
+        FinMientras
+        DevolverAux(colaAux, objC)
+        retornar texto
+    FinMetodo
 
-  publico vacio DevolverAux(Cola objca, Cola objc)
-   mientras(objca.IsEmpty()==falso)
-     objc.Push(objca.Pop())
-   Fin_Mientras
-  FinMetodo
+    publico vacio DevolverAux(Cola colaAux, Cola objC)
+        mientras(colaAux.IsEmpty() == falso) haga
+            objC.Push(colaAux.Pop())
+        FinMientras
+    FinMetodo
 
-  publico booleano Buscar (Cola c1,Cola c2,entero cod)
-     booleano sw=falso
-     Estudiante info
-     mientras(c1.IsEmpty()==falso)haga
-      info=(Estudiante)c1.Pop()
-       Si(info.obtenerCodigo()== cod)entonces
-         sw = verdadero
-       FinSi
-       c2.Push(info)
-     FinMientras
-    DevolverAux(c2,c1)
-    retornar sw
-  FinMetodo
+    publico booleano Buscar(Cola objC, entero cod)
+        Cola colaAux = nuevo Cola(objC.obtenerMaxsize())
+        booleano encontrado = falso
+        Estudiante info
+        mientras(objC.IsEmpty() == falso) haga
+            info = (Estudiante)objC.Pop()
+            si(info.obtenerCodigo() == cod) entonces
+                encontrado = verdadero
+            FinSi
+            colaAux.Push(info)
+        FinMientras
+        DevolverAux(colaAux, objC)
+        retornar encontrado
+    FinMetodo
 
-  publico Objeto Eliminar (Cola c1,Cola c2,entero cod)
-    Objeto est = nulo
-    Estudiante info
-    mientras(c1.IsEmpty()==falso)haga
-       info=(Estudiante)c1.Pop()
-        Si(info.obtenerCodigo()== cod))entonces
-          est = info
-         sino
-          c2.Push(info)
-        Fin_Si
-    Fin_Mientras
-    DevolverAux(c2,c1)
-    retornar est
-  FinMetodo
+    publico Objeto Consultar(Cola objC, entero cod)
+        Cola colaAux = nuevo Cola(objC.obtenerMaxsize())
+        Objeto estudiante = nulo
+        Estudiante info
+        mientras(objC.IsEmpty() == falso) haga
+            info = (Estudiante)objC.Pop()
+            si(info.obtenerCodigo() == cod) entonces
+                estudiante = info
+            FinSi
+            colaAux.Push(info)
+        FinMientras
+        DevolverAux(colaAux, objC)
+        retornar estudiante
+    FinMetodo
 
-  publico Objeto Consultar(Cola c1, Cola c2,entero cod)
-    Objeto est = nulo
-    Estudiante info
-    mientras(c1.IsEmpty()==falso)
-      info =(Estudiante)c1.Pop()
-      Si(info.obtenerCodigo() == cod)entonces
-        est = info
-      Fin_Si
-      c2.Push(info)
-    Fin_Mientras
-    DevolverAux(c2,c1)
-    retornar est
-  FinMetodo
+    publico Objeto Eliminar(Cola objC, entero cod)
+        Cola colaAux = nuevo Cola(objC.obtenerMaxsize())
+        Objeto estudiante = nulo
+        Estudiante info
+        mientras(objC.IsEmpty() == falso) haga
+            info = (Estudiante)objC.Pop()
+            si(info.obtenerCodigo() == cod) entonces
+                estudiante = info
+            sino
+                colaAux.Push(info)
+            FinSi
+        FinMientras
+        DevolverAux(colaAux, objC)
+        retornar estudiante
+    FinMetodo
 
-  publico vacio actualizarNotaDef(Cola objCola, Cola objCAux, entero cod)
-     double notaDef
-     booleano flag = falso
-     Estudiante info
-     mientras(objCola.IsEmpty()==falso)haga
-      info = (Estudiante)objCola.Pop()
-      si(info.obtenerCodigo() == cod)entonces
-        flag  = verdadero
-        imprimir(" ingrese la nueva nota definitiva del estudiante: ")
-        lea notaDef
-        info.asignarNotaDef(notaDef)
-        imprimir("La nota del estudiante fue actualizados exitosamente")
-        objPAux.Push(info)
-        roimper
-      Fin_Si
-      objCAux.Push(info)
-     Fin_Mientras
-     si(flag==falso)entonces
-       imprimir("**El código del estudiante no existe en la Cola\n")
-     Fin_Si
-     retornoAux(objCola, objCAux)
-   FinMetodo
+    publico vacio actualizarNotaDef(Cola objC, entero cod)
+        Cola colaAux = nuevo Cola(objC.obtenerMaxsize())
+        real notaDef
+        booleano encontrado = falso
+        Estudiante info
+        mientras(objC.IsEmpty() == falso) haga
+            info = (Estudiante)objC.Pop()
+            si(info.obtenerCodigo() == cod) entonces
+                encontrado = verdadero
+                imprimir("Ingrese la nueva nota definitiva:")
+                lea notaDef
+                info.asignarNotaDef(notaDef)
+                imprimir("La nota del estudiante fue actualizada correctamente.")
+            FinSi
+            colaAux.Push(info)
+        FinMientras
+        DevolverAux(colaAux, objC)
+        si(encontrado == falso) entonces
+            imprimir("El código del estudiante no existe en la cola.")
+        FinSi
+    FinMetodo
+
 FinClase
