@@ -106,63 +106,7 @@ Clase ManejoPila
  * Consultar los libros publicados en un año que ingrese el usuario+
     
 
-    publico Objeto Eliminar(Pila objPila, entero cod)
-        Pila pilaAux = nuevo Pila(objPila.obtenerMaxsize())
-        Objeto aux = nulo
-        Estudiante info
-        mientras(objPila.IsEmpty()==falso)haga
-            info = (Estudiante)objPila.Pop()
 
-            si(info.obtenerCodigo()==cod)entonces
-                aux = info
-            sino
-                pilaAux.Push(info)
-            Fin_Si
-        Fin_Mientras
-
-        retornoPilaAux(objPila,pilaAux)
-
-        retornar aux
-    FinMetodo
-
-
-    publico Objeto ConsultarLibro(Pila objPila, entero cod)
-        Pila pilaAux = nuevo Pila(objPila.obtenerMaxsize())
-        Objeto aux = nulo
-        Estudiante info
-        mientras(objPila.IsEmpty()==falso)haga
-            info = (Estudiante)objPila.Pop()
-            si(info.obtenerCodigo()==cod)entonces
-                aux = info
-            Fin_Si
-            pilaAux.Push(info)
-        Fin_Mientras
-        retornoPilaAux(objPila,pilaAux)
-        retornar aux
-    FinMetodo
-
-
-    publico vacio actualizarNotaDef(Pila objPila, entero cod)
-        Pila pilaAux = nuevo Pila(objPila.obtenerMaxsize())
-        real notaDef
-        booleano encontrado = falso
-        Estudiante info
-        mientras(objPila.IsEmpty()==falso)haga
-            info = (Estudiante)objPila.Pop()
-            si(info.obtenerCodigo()==cod)entonces
-                encontrado = verdadero
-                imprimir("Ingrese la nueva nota definitiva del estudiante:")
-                lea notaDef
-                info.asignarNotaDef(notaDef)
-                imprimir("La nota del estudiante fue actualizada exitosamente")
-            Fin_Si
-            pilaAux.Push(info)
-        Fin_Mientras
-        retornoPilaAux(objPila,pilaAux)
-        si(encontrado==falso)entonces
-            imprimir("El código del estudiante no existe en la pila")
-        Fin_Si
-    FinMetodo
 
 FinClase
 
