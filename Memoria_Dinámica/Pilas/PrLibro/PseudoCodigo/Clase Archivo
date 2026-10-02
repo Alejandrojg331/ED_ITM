@@ -19,7 +19,7 @@ clase Archivo
     FinMetodo
     
     publico Editorial[] leerEditorial()
-      entero cl = contadorLineas("DatosEstudiante.txt");
+      entero cl = contadorLineas("DatosEditorial.txt");
       Estudiante vecE[];
       vecE = nuevo Estudiante[cl];
       Cadena registro;
@@ -141,7 +141,7 @@ clase Archivo
    publico vacio renombrarArchivo( Cadena nuevoNombre)
     
       intentar
-        Cadena nombreActual = "DatosEstudiante.txt";
+        Cadena nombreActual = "DatosEditorial.txt";
         File oldfile = nuevo File(nombreActual);
         File nuevofile = nuevo File(nuevoNombre);
          Si (oldfile.renombrar(nuevofile))entonces
