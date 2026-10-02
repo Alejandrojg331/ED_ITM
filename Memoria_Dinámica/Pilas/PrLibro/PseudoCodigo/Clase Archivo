@@ -1,3 +1,6 @@
+Consultar que ajuste se debe realizar sobre esta clase para poder guardar archivos .csv
+
+
 clase Archivo 
     File archivo;//archivo logico
     FileReader lectura;//objeto para modo lectura del archivo
