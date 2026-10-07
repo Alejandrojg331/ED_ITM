@@ -102,7 +102,20 @@ Clase ManejoPila
     FinMetodo
 
  * Cantidad de libros de un género consultado por el usuario
+
  * promedio de Páginas de los libros de una editorial 
+publico real calculoPromedioPaginas(Pila objPila)
+  Pila pilaAux = nueva Pila(objPila.obtenerSize())
+  real acumPaginas = 0
+  Libro l = nuevo Libro()
+  mientras(objPila.isEmpty() == Falso)haga
+     l = (Libro)objPila.pop()
+     acumPaginas = acumPaginas + l.obtenerNumPaginas()
+     pilaAux.push(l)
+  fin Mientras
+   devolverAux(pilaAux, objPila)
+   retornar acumPaginas / objPila.obtenerSize()
+ FinMetodo 
  * Consultar los libros publicados en un año que ingrese el usuario+
     
 
